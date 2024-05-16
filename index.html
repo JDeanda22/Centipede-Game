@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Centipede</title>
+  <script src="cent.js"></script>
+  <style>
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url("black.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#game {
+  width: 600px;
+  height: 650px;
+  border: 2px solid #ffffff;
+  text-align: center;
+  margin-bottom: 20px
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  background-color: #e60000;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.rotate {
+  animation: rotate 0.5s linear infinite;
+}
+
+canvas#game {
+  display: block;
+  margin: 0 auto;
+}
+
+.score-label,
+.high-score-label,
+.lives-label {
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  color: white;
+  margin: 5px;
+}
+
+canvas#game {
+  cursor: crosshair;
+}
+
+.game-over {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 20px;
+  border-radius: 5px;
+  color: white;
+  text-align: center;
+  font-size: 24px;
+}
+
+#pauseButton,
+#resumeButton {
+  background-color: #e60000;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-right: 10px;
+  transition: background-color 0.3s ease;
+}
+
+#pauseButton:hover,
+#resumeButton:hover {
+  background-color: #2da312;
+}
+
+#pauseButton:active,
+#resumeButton:active {
+  background-color: #990000;
+}
+
+#pauseButton:focus,
+#resumeButton:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.3);
+}
+
+  </style>
+</head>
+<body>
+  <button id="pauseButton" onclick="game.pauseGame()">Pause</button>
+  <button id="resumeButton" onclick="game.resumeGame()" disabled>Resume</button>
+
+  <div id="container">
+    <canvas id="game"></canvas>
+  </div>
+
+  <audio id="spider" loop>
+    <source src="Centipede_Spider_Sound.ogg" type="audio/ogg">
+  </audio>
+  <audio id="refresh">
+    <source src="refresh.mp4" type="audio/mp4">
+  </audio>
+  <audio id="shotSound">
+    <source src="shot.wav" type="audio/wav">
+  </audio>
+  <audio id="deathSound">
+    <source src="death.wav" type="audio/wav">
+  </audio>
+</body>
+</html>
